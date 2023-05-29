@@ -28,7 +28,7 @@ var loggerObject = Logger(
 class APIService {
   static APIService _singleton = APIService._internal();
 
-  final baseUrl = '192.168.137.148:8001';
+  final baseUrl = '192.168.137.148:8000';
   factory APIService() => _singleton;
 
   factory APIService.reInitial() {
@@ -249,6 +249,8 @@ extension SplitByLength on String {
   }
 
 }
+
+
 // extension on String {
 //   List<String> splitByLength(int length) => [substring(0, length), substring(length)];
 // }
