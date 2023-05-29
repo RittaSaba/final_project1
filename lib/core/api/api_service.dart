@@ -28,7 +28,7 @@ var loggerObject = Logger(
 class APIService {
   static APIService _singleton = APIService._internal();
 
-  final baseUrl = '192.168.137.148:8000';
+  final baseUrl = '192.168.137.148:8002';
   factory APIService() => _singleton;
 
   factory APIService.reInitial() {
