@@ -5,10 +5,10 @@ import 'package:final_project1/core/app_theme.dart';
 import 'package:final_project1/core/widgets/search_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart'as http;
+import '../features/cases/presentation/pages/cases_display.dart';
+import '../features/tasks/presentation/pages/week_tasks_display.dart';
 import 'widgets/appBar_widget.dart';
 import 'widgets/drawer/drawer_widget.dart';
-import '../features/tasks/presentation/pages/week_tasks_display.dart';
-import '../features/cases/presentation/pages/cases_display.dart';
 
 
 class BasicScreen extends StatefulWidget {

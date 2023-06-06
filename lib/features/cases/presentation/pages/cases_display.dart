@@ -1,7 +1,8 @@
 import 'dart:convert';
 
 import 'package:final_project1/core/app_theme.dart';
-import 'package:final_project1/features/profile/presentation/pages/userProfilScreen.dart';
+import 'package:final_project1/features/user_profile/ui/pages/change_password_in_user_profil_screen.dart';
+import 'package:final_project1/router/app_router.dart';
 import 'package:flutter/material.dart';
 
 import '../../domain/entities/case.dart';
@@ -63,11 +64,7 @@ Widget build_Cases_Display(BuildContext context) {
           //shape: CircleBorder(side: BorderSide(width: 20)),
           child: InkWell(
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                return Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: Case_Display_Num2());
-              }));
+              Navigator.pushNamed(context, RouteName.caseDetails);
             },
             child: Column(
               // mainAxisSize: MainAxisSize.min,

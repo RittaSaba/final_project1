@@ -6,7 +6,7 @@ AppBar build_appBar({IconButton? searchIcon,TabBar? tabBar, required String titl
 
 
   return AppBar(
-   // actions: [widget(child: searchIcon),],
+    // actions: [widget(child: searchIcon),],
     bottom: tabBar!=null?tabBar:null,
     centerTitle: true,
     //automaticallyImplyLeading: false,
@@ -20,16 +20,18 @@ AppBar build_appBar({IconButton? searchIcon,TabBar? tabBar, required String titl
       children: [
         Container(
           //height: 100,
-          height: 300,
+          height: 400,
 
           decoration: BoxDecoration(
-            boxShadow: [BoxShadow(color: colorbar, blurRadius: 20)],
+            boxShadow: [
+              BoxShadow(color: Color(0xFF587D99), blurRadius: 20)],
             borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(35),
-                bottomRight: Radius.circular(35)),
+              bottomLeft: Radius.circular(35),
+              //  bottomRight: Radius.circular(35)
+            ),
             color: Colors.white,
             gradient: LinearGradient(
-              colors: [(Color(0xF001305C)), (Color(0xFF587D99))],
+              colors: [(Color(0xF0A2C8EF)), (Color(0xFF587D99))],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),

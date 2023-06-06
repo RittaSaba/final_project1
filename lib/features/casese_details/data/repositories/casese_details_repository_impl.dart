@@ -13,7 +13,7 @@ import '../dataSources/casese_details_remote_data_source.dart';
 import '../models/casese_details_model.dart';
 
 class Casese_detailsRepositoryImpl implements Casese_detailsRepository {
-  final Casese_detailsRemoteDataSource remoteDataSource;
+  final CaseseDetailsRemoteDataSource remoteDataSource;
   final Casese_detailsLocalDataSource localDataSource;
   final NetworkInfo networkInfo;
 

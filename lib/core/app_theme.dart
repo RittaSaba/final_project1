@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 
-Color colorbar = Color(0xff597d9b);
-Color colorbar1 = Color(0xF036506B);
-Color colorbar2 = Color(0xFF587D99);
-Color colorText = Color(0xff01305a);
-Color colorText1 = Color(0xfffcf0f0);
-Color colorIcon = Color(0xfff0d68c);
-Color colorbody = Color(0xffe0bb8b);
+Color colorbar = const Color(0xff597d9b);
+Color colorbar1 = const Color(0xF036506B);
+Color colorbar2 = const Color(0xFF587D99);
+Color colorText = const Color(0xff01305a);
+Color colorText1 = const Color(0xfffcf0f0);
+Color colorIcon = const Color(0xfff0d68c);
+Color colorbody = const Color(0xffe0bb8b);
 Color colorContainer=Colors.grey.shade200;
 
-Color tryy = Color(0xfff8eacd);
+Color tryy = const Color(0xfff8eacd);
 final appTheme = ThemeData(
     appBarTheme: AppBarTheme(
       backgroundColor: colorbody,

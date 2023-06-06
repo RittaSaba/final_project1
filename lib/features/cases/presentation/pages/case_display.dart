@@ -1,9 +1,13 @@
-
+import 'package:final_project1/core/my_expansion/item_expantsion.dart';
+import 'package:final_project1/features/cases/new/bloc/cases_cubit/cases_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/app_theme.dart';
+import '../../../../core/my_expansion/my_expansion_widget.dart';
 import '../../../../core/widgets/appBar_widget.dart';
-import '../../../profile/presentation/pages/userProfilScreen.dart';
+import '../../../user_profile/ui/pages/change_password_in_user_profil_screen.dart';
+import '../widgets/case_detail.dart';
 import '../widgets/case_field.dart';
 
 class Case_Display extends StatefulWidget {
@@ -14,49 +18,34 @@ class Case_Display extends StatefulWidget {
 }
 
 class _Case_DisplayState extends State<Case_Display> {
-  final List<String> list =['حالة القضية','تفاصيل إضافية','جلسات القضية','مرفقات القضية','القرارات'];
-bool isPressed=false;
+  final List<String> list = [
+    'حالة القضية',
+    'تفاصيل إضافية',
+    'جلسات القضية',
+    'مرفقات القضية',
+    'القرارات'
+  ];
+  bool isPressed = false;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: build_appBar(title: 'تفاصيل القضية'),
-      body: Container(
-        padding: EdgeInsets.only(top: 2),
-
-        //alignment: Alignment.topCenter,
-        child: ListView(
-
-          padding: EdgeInsets.all(10),
-          //scrollDirection: Axis.vertical,
-          children: list.map((e) {
-            return Card(
-
-              color: colorbar,
-
-              elevation: 50,
-              //shape: CircleBorder(side: BorderSide(width: 20)),
-              child:
-              InkWell(
-
-borderRadius: BorderRadius.circular(50),
-
-
-                onTap: (){
-                  setState(() {
-                    isPressed=!isPressed;
-                  });
-              /*    Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) {
-                    return Directionality(textDirection: TextDirection.rtl,child: Case_Display());
-                  }));*/
-
-                },
-                child: Row(children: [isPressed?Icon(Icons.arrow_right,size: 50,color: colorIcon,):
-                Icon(Icons.arrow_drop_down,size: 50,color: colorIcon,),
-                  Text(e,style: TextStyle(fontSize: 25,color: colorText),)],),
-              ),
-            );
-          }).toList(),
+    return Scaffold(
+      appBar: build_appBar(title: 'تفاصيل القضية'),
+      body: SingleChildScrollView(
+        child: MyExpansionWidget(
+          items: list
+              .map((e) => ItemExpansion(
+                  header: Text(
+                    e,
+                    style: TextStyle(fontSize: 25, color: colorText),
+                  ),
+                  body: Container(
+                    height: 100.0,
+                    color: Colors.red,
+                  )))
+              .toList(),
         ),
-      ),);
+      ),
+    );
   }
 }

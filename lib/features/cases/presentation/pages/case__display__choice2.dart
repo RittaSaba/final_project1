@@ -4,7 +4,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../../../../core/app_theme.dart';
 import '../../../../core/widgets/appBar_widget.dart';
-import '../../../profile/presentation/pages/userProfilScreen.dart';
+import '../../../user_profile/ui/pages/change_password_in_user_profil_screen.dart';
 import '../widgets/case_field.dart';
 import '../widgets/staggered_grid_tile_widget.dart';
 import 'package:transparent_image/transparent_image.dart';

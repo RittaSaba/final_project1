@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/basic_screen.dart';
-import 'core/util/shared_preferences.dart';
+import 'core/di/injection_container.dart'as di;
+import 'core/util/shared_preferences.dart' ;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+ await di.init();
   await SharedPreferences.getInstance().then((value) {
     AppSharedPreference.init(value);
   });
@@ -23,12 +25,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const Directionality(
-      textDirection: TextDirection.rtl,
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        onGenerateRoute: AppRoutes.routes,
-      ),
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      onGenerateRoute: AppRoutes.routes,
+      //  onGenerateRoute: AppRoutes.routes,
     );
   }
 }

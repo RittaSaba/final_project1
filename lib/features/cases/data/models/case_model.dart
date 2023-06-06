@@ -25,7 +25,8 @@ class CaseModel extends Case1 {
         Status: json['Status'],
         Value_Status: json['Value_Status'],
         court_id: json['court_id'],
-        case_room: json['case_room']);
+        case_room: json['case_room'],
+    );
   }
 
   Map<String, dynamic> toJson() {

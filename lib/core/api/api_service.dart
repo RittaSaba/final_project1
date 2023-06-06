@@ -1,13 +1,13 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
+
 // import 'package:flutter_qareeb_client/core/extensions/extensions.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'package:logger/logger.dart';
 
 import '../util/shared_preferences.dart';
-
 
 var loggerObject = Logger(
   printer: PrettyPrinter(
@@ -25,10 +25,13 @@ var loggerObject = Logger(
   ),
 );
 
+const baseUrl = '192.168.19.17:8001';
+const acccessToken =
+    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC4xOS4xNzo4MDAxL2FwaS9hdXRoL2xvZ2luIiwiaWF0IjoxNjg2MDQxODA5LCJleHAiOjE2ODYwNDU0MDksIm5iZiI6MTY4NjA0MTgwOSwianRpIjoiN0prMGhmNXFYcDZDdVUwQyIsInN1YiI6IjIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.W9GKCRMgCBLYNFRKft8h5aHLW_IHa-VcQG2qZwRMaJQ';
+
 class APIService {
   static APIService _singleton = APIService._internal();
 
-  final baseUrl = '192.168.137.148:8002';
   factory APIService() => _singleton;
 
   factory APIService.reInitial() {
@@ -39,8 +42,8 @@ class APIService {
   final innerHeader = {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
-    //TODO: حطي ال توكين الخاصة فيكي
-    'Authorization': 'Bearer ${AppSharedPreference.getToken()}',
+    'Authorization': 'Bearer $acccessToken',
+    // 'Authorization': 'Bearer ${AppSharedPreference.getToken()}',
   };
 
   APIService._internal();
@@ -68,7 +71,7 @@ class APIService {
     final uri = Uri.http(hostName ?? baseUrl, url, query);
 
     final response = await http.get(uri, headers: innerHeader).timeout(
-          const Duration(seconds: 400),
+          const Duration(seconds: 30),
           onTimeout: () => http.Response('connectionTimeOut', 481),
         );
 
@@ -96,11 +99,12 @@ class APIService {
 
     logRequest(url, (body ?? {})..addAll(query ?? {}));
 
-    final response =
-        await http.post(uri, body: jsonEncode(body), headers: innerHeader).timeout(
-              const Duration(seconds: 400),
-              onTimeout: () => http.Response('connectionTimeOut', 481),
-            );
+    final response = await http
+        .post(uri, body: jsonEncode(body), headers: innerHeader)
+        .timeout(
+          const Duration(seconds: 30),
+          onTimeout: () => http.Response('connectionTimeOut', 481),
+        );
 
     logResponse(url, response);
 
@@ -127,11 +131,12 @@ class APIService {
 
     logRequest(url, body);
 
-    final response =
-        await http.put(uri, body: jsonEncode(body), headers: innerHeader).timeout(
-              const Duration(seconds: 400),
-              onTimeout: () => http.Response('connectionTimeOut', 481),
-            );
+    final response = await http
+        .put(uri, body: jsonEncode(body), headers: innerHeader)
+        .timeout(
+          const Duration(seconds: 30),
+          onTimeout: () => http.Response('connectionTimeOut', 481),
+        );
 
     logResponse(url, response);
 
@@ -157,11 +162,12 @@ class APIService {
 
     logRequest(url, body);
 
-    final response =
-        await http.delete(uri, body: jsonEncode(body), headers: innerHeader).timeout(
-              const Duration(seconds: 400),
-              onTimeout: () => http.Response('connectionTimeOut', 481),
-            );
+    final response = await http
+        .delete(uri, body: jsonEncode(body), headers: innerHeader)
+        .timeout(
+          const Duration(seconds: 30),
+          onTimeout: () => http.Response('connectionTimeOut', 481),
+        );
 
     logResponse(url, response);
 
@@ -213,7 +219,8 @@ class APIService {
 }
 
 void logRequest(String url, Map<String, dynamic>? q, {String? additional}) {
-  loggerObject.i('$url \n ${jsonEncode(q)}${additional == null ? '' : '\n$additional'}');
+  loggerObject.i(
+      '$url \n ${jsonEncode(q)}${additional == null ? '' : '\n$additional'}');
 }
 
 void logResponse(String url, http.Response response) {
@@ -247,9 +254,7 @@ extension SplitByLength on String {
     }
     return pieces;
   }
-
 }
-
 
 // extension on String {
 //   List<String> splitByLength(int length) => [substring(0, length), substring(length)];

@@ -34,9 +34,9 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   Widget build(BuildContext context) {
     Timer(const Duration(seconds: 2), () {
       if (AppSharedPreference.isLogin()) {
-        Navigator.pushReplacementNamed(context, RouteName.home);
+        Navigator.pushReplacementNamed(context, RouteName.basicScreen);
       } else {
-        Navigator.pushReplacementNamed(context, RouteName.login);
+        Navigator.pushReplacementNamed(context, RouteName.basicScreen);
       }
     });
 

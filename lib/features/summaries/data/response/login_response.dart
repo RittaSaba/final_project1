@@ -11,7 +11,7 @@ class LoginResponse {
   final num expiresIn;
   final User user;
 
-  factory LoginResponse.fromJson(Map<String, dynamic> json){
+    factory LoginResponse.fromJson(Map<String, dynamic> json){
     return LoginResponse(
       accessToken: json["access_token"] ?? "",
       tokenType: json["token_type"] ?? "",
