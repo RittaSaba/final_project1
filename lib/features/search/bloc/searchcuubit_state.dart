@@ -1,19 +1,22 @@
-part of 'GetCasesCubit.dart';
+import 'package:equatable/equatable.dart';
 
-class CasesInitial extends Equatable {
+import '../../../core/strings/enum_manager.dart';
+import '../data/response/searchresponse.dart';
+
+class SeachInitial extends Equatable {
   final CubitStatuses statuses;
-  final CasesResponse result;
+  final SearchResponse result;
   final String error;
 
-  const CasesInitial({
+  const SeachInitial({
     required this.statuses,
     required this.result,
     required this.error,
   });
 
-  factory CasesInitial.initial() {
-    return CasesInitial(
-      result: CasesResponse.fromJson({}),
+  factory SeachInitial.initial() {
+    return SeachInitial(
+      result:SearchResponse .fromJson({}),
       error: '',
       statuses: CubitStatuses.init,
     );
@@ -22,12 +25,12 @@ class CasesInitial extends Equatable {
   @override
   List<Object> get props => [statuses, result, error];
 
-  CasesInitial copyWith({
+  SeachInitial copyWith({
     CubitStatuses? statuses,
-    CasesResponse? result,
+    SearchResponse? result,
     String? error,
   }) {
-    return CasesInitial(
+    return SeachInitial(
       statuses: statuses ?? this.statuses,
       result: result ?? this.result,
       error: error ?? this.error,

@@ -1,5 +1,5 @@
 import 'package:final_project1/core/basic_screen.dart';
-import 'package:final_project1/features/cases/new/bloc/cases_cubit/cases_cubit.dart';
+import 'package:final_project1/features/cases/new/bloc/cases_cubit/GetCasesCubit.dart';
 import 'package:final_project1/features/cases/presentation/pages/case_display.dart';
 import 'package:final_project1/features/user_profile/ui/pages/change_password_in_user_profil_screen.dart';
 import 'package:flutter/material.dart';
@@ -72,6 +72,11 @@ class AppRoutes {
 
       //endregion
 
+
+    //region
+
+    //endregion
+
       //region
       case RouteName.basicScreen:
         return MaterialPageRoute(builder: (context) {
@@ -79,16 +84,34 @@ class AppRoutes {
         });
       //endregion
 
-      //region
+
+    //region cases
       case RouteName.userProfileDetails:
         final providers = [
           BlocProvider(
               create: (context) => sl<GetProfileCubit>()..getProfile(context)),
         ];
+
         return MaterialPageRoute(builder: (context) {
           return MultiBlocProvider(
             providers: providers,
-            child: const UserProfileDetails(),
+            child: UserProfileDetails(),
+          );
+        });
+
+    //endregion
+
+      //region
+
+      case RouteName.caseDetails:
+        final providers = [
+          BlocProvider(
+              create: (context) => sl<GetCasesCubit>()..getCases(context)),
+        ];
+        return MaterialPageRoute(builder: (context) {
+          return MultiBlocProvider(
+            providers: providers,
+            child: const LoginPage(),
           );
         });
     }

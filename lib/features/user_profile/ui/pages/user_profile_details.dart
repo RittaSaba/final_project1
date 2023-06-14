@@ -18,7 +18,7 @@ class UserProfileDetails extends StatelessWidget {
       textDirection: TextDirection.rtl,
       child: Scaffold(
           appBar: build_appBar(
-            title: 'الملف الشخصي',
+            title: 'الملف الشخصي',context: context
           ),
           body: BlocBuilder<GetProfileCubit, GetProfileInitial>(
               builder: (context, state) {

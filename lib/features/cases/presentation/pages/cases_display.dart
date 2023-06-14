@@ -1,93 +1,74 @@
-import 'dart:convert';
 
-import 'package:final_project1/core/app_theme.dart';
-import 'package:final_project1/features/user_profile/ui/pages/change_password_in_user_profil_screen.dart';
-import 'package:final_project1/router/app_router.dart';
+
+
+import 'package:final_project1/features/cases2/bloc/cases2_cubit/GetCaseCubit.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../domain/entities/case.dart';
+import '../../../../core/app_theme.dart';
+import '../../../../router/app_router.dart';
+import '../../../cases2/bloc/cases2_cubit/GetCaseInitial.dart';
+
 import '../widgets/case_field.dart';
 import '../widgets/text_button.dart';
-import 'case__display__choice2.dart';
-import 'case_display.dart';
 
-final List<Case1> list = [
-  Case1(
-      id: 1,
-      title: "قضية بيع عقار",
-      Status: "قيد التحقيق",
-      Value_Status: 0,
-      case_room: "156",
-      court_id:55,),
-  Case1(
-    id: 2,
-    title: "قضية بيع عقار",
-    Status: "قيد التحقيق",
-    Value_Status: 0,
-    case_room: "156",
-    court_id:55,),
-  Case1(
-    id: 3,
-    title: "قضية بيع عقار",
-    Status: "قيد التحقيق",
-    Value_Status: 0,
-    case_room: "156",
-    court_id:55,),
-  Case1(
-    id: 4,
-    title: "قضية بيع عقار",
-    Status: "قيد التحقيق",
-    Value_Status: 0,
-    case_room: "156",
-    court_id:55,),
-  Case1(
-    id: 5,
-    title: "قضية بيع عقار",
-    Status: "قيد التحقيق",
-    Value_Status: 0,
-    case_room: "156",
-    court_id:55,),
-];
+class CaseDisplayfinal extends StatefulWidget {
+  const CaseDisplayfinal({Key? key}) : super(key: key);
 
-Widget build_Cases_Display(BuildContext context) {
-  return Container(
-    padding: EdgeInsets.only(top: 2),
+  @override
+  State<CaseDisplayfinal> createState() => _CaseDisplayfinalState();
+}
 
-    //alignment: Alignment.topCenter,
-    child: ListView(
-      padding: EdgeInsets.all(10),
-      //scrollDirection: Axis.vertical,
-      children: list.map((e) {
-        return Card(
-          color: colorContainer,
-          elevation: 20, shadowColor: colorbar,
-          //shape: CircleBorder(side: BorderSide(width: 20)),
-          child: InkWell(
-            onTap: () {
-              Navigator.pushNamed(context, RouteName.caseDetails);
-            },
-            child: Column(
-              // mainAxisSize: MainAxisSize.min,
-              children: [
-                buildCaseField("اسم القضية   :   ", e.title),
-                buildCaseField("اسم المحامي  :   ", e.Status),
-                buildCaseField("اسم الموكل    :   ", e.case_room),
-                buildCaseField("تاريخ القضية :  ", e.court_id.toString()),
+class _CaseDisplayfinalState extends State<CaseDisplayfinal> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: BlocBuilder<GetCaseCubit, GetCaseInitial>(
+          builder: (context, state) {
+            return Container(
+              padding: EdgeInsets.only(top: 2),
 
-                // SizedBox(height: 0.2,),
-                Divider(),
-                Container(
-                  //color: Colors.grey[200],
+              //alignment: Alignment.topCenter,
+              child: ListView(
+                  padding: EdgeInsets.all(10),
+                  //scrollDirection: Axis.vertical,
+                  children:
+                  [ Card(
+                    color: colorContainer,
+                    elevation: 20, shadowColor: colorbar,
+                    //shape: CircleBorder(side: BorderSide(width: 20)),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, RouteName.caseDetails);
+                      },
+                      child: Column(
+                        // mainAxisSize: MainAxisSize.min,
+                        children: [
+                          buildCaseField("اسم القضية   :   ", " ${state.result.title}"),
+                          // buildCaseField("اسم المحامي  :   ", e.Status),
+                          // buildCaseField("اسم الموكل    :   ", e.case_room),
+                          // buildCaseField("تاريخ القضية :  ", e.court_id
+                          //     .toString()),
 
-                  margin: EdgeInsets.only(top: 2),
+                          // SizedBox(height: 0.2,),
+                          Divider(),
+                          Container(
+                            //color: Colors.grey[200],
 
-                  child: buildTextButton("ارسال مرفق", 18, context),
-                ),
-              ],
-            ),
-          ),
-        );
-      }).toList(),
-    ),
-  );
+                            margin: EdgeInsets.only(top: 2),
+
+                            child: buildTextButton("ارسال مرفق", 18, context),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
+                  ]
+
+              ),
+            );
+          },
+        ));
+  }
 }

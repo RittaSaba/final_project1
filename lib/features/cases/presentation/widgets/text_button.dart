@@ -6,7 +6,7 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../../../core/app_theme.dart';
 import '../../../../send_attachment.dart';
-import '../../../attachments/presentation/widgets/send_attachments.dart';
+import '../../../casese_details/presentation/widgets/send_attachments.dart';
 FilePickerResult? result;
 
 String?_fileName;

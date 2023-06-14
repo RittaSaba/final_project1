@@ -9,6 +9,6 @@ class DaysTasks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( appBar: build_appBar(title: "مهام اليوم",),body: Container(child: Text("ssssss"),));
+    return Scaffold( appBar: build_appBar(title: "مهام اليوم",context: context),body: Container(child: Text("ssssss"),));
   }
 }

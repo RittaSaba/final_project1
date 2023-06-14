@@ -39,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
       ],
       child: Scaffold(
         backgroundColor: Colors.white,
-        appBar: build_appBar(title: 'تسجيل الدخول '),
+        appBar: build_appBar(title: 'تسجيل الدخول ',context: context),
         body: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Center(

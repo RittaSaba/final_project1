@@ -34,7 +34,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-          appBar: build_appBar(title: 'تعديل كلمة المرور'),
+          appBar: build_appBar(title: 'تعديل كلمة المرور',context: context),
           body: Container(
             padding: const EdgeInsets.only(left: 15, top: 20, right: 15),
             child: GestureDetector(
