@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/app_theme.dart';
 import '../../../../core/widgets/appBar_widget.dart';
 import '../../../../generated/assets.dart';
-import '../../../cases/presentation/widgets/defaultFormField.dart';
+import '../../../cases/new/ui/widget/defaultFormField.dart';
 import '../../../summaries/bloc/login_cubit/login_cubit.dart';
 
 class LoginPage extends StatefulWidget {
@@ -37,7 +37,8 @@ class _LoginPageState extends State<LoginPage> {
           },
         ),
       ],
-      child: Scaffold(
+      child:Directionality(
+    textDirection: TextDirection.rtl,child:  Scaffold(
         backgroundColor: Colors.white,
         appBar: build_appBar(title: 'تسجيل الدخول ',context: context),
         body: Padding(
@@ -163,7 +164,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
         ),
-      ),
+      ),)
     );
   }
 }

@@ -1,6 +1,5 @@
 
 import 'package:dartz/dartz.dart';
-import 'package:final_project1/features/attachments/domain/entities/attachment.dart';
 import 'package:final_project1/features/user/domain/entities/User.dart';
 
 import '../../../../core/error/failures.dart';

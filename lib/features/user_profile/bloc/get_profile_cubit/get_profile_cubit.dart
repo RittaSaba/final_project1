@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:final_project1/core/extensions.dart';
+import 'package:final_project1/core/util/shared_preferences.dart';
 import 'package:final_project1/features/user_profile/data/response/profile_response.dart';
 import 'package:flutter/material.dart';
 
@@ -38,7 +39,7 @@ class GetProfileCubit extends Cubit<GetProfileInitial> {
   Future<Pair<ProfileResponse?, String?>> _getProfileApi() async {
     if (await network.isConnected) {
       final response = await APIService()
-          .getApi(url: GetUrl.profile, query: {'token': acccessToken});
+          .getApi(url: GetUrl.profile, query: {'token': AppSharedPreference.getToken()});
 
       if (response.statusCode.success) {
         return Pair(ProfileResponse.fromJson(response.toJson), null);

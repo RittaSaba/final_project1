@@ -36,7 +36,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
       if (AppSharedPreference.isLogin()) {
         Navigator.pushReplacementNamed(context, RouteName.basicScreen);
       } else {
-        Navigator.pushReplacementNamed(context, RouteName.basicScreen);
+        Navigator.pushReplacementNamed(context, RouteName.login);
       }
     });
 

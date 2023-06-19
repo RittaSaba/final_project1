@@ -2,7 +2,6 @@ import 'dart:convert';
 
 
 import 'package:dartz/dartz.dart';
-import 'package:final_project1/features/attachments/domain/entities/attachment.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/error/exception.dart';

@@ -91,7 +91,7 @@ class Searchbuild extends SearchDelegate{
   @override
   Widget buildSuggestions(BuildContext context) {
     return Center(
-      child: Text('Search User'),
+      child: Text('بحث عن قضية'),
     );
 
   }

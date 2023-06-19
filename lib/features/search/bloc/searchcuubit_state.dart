@@ -16,7 +16,7 @@ class SeachInitial extends Equatable {
 
   factory SeachInitial.initial() {
     return SeachInitial(
-      result:SearchResponse .fromJson({}),
+      result:SearchResponse.fromJson({}),
       error: '',
       statuses: CubitStatuses.init,
     );

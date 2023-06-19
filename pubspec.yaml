@@ -31,6 +31,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  drawable_text:
+    path: ../drawable_text-master
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -43,13 +45,15 @@ dependencies:
   equatable: ^2.0.5
   shared_preferences: ^2.1.1
   dartz: ^0.10.1
-#  flutter_local_notifications: ^14.1.1
+  #  flutter_local_notifications: ^14.1.1
   internet_connection_checker: ^1.0.0+1
   get_it:
   logger:
+  date_picker_timeline:
   collection:
   flutter_bloc: ^8.1.3
-
+  dropdown_button2: ^1.9.2
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:

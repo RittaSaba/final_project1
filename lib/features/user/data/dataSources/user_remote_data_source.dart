@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
-import 'package:final_project1/features/attachments/domain/entities/attachment.dart';
 import 'package:http/http.dart' as http;
 
 import '../../../../core/error/exception.dart';

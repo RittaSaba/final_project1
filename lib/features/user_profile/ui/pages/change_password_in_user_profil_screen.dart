@@ -1,13 +1,17 @@
 import 'dart:async';
 
+import 'package:final_project1/core/api/api_service.dart';
+import 'package:final_project1/core/api/api_url.dart';
 import 'package:final_project1/core/app_theme.dart';
 import 'package:final_project1/core/extensions.dart';
 import 'package:final_project1/core/util/note_message.dart';
+import 'package:final_project1/core/util/shared_preferences.dart';
 import 'package:final_project1/core/widgets/appBar_widget.dart';
-import 'package:final_project1/features/cases/presentation/widgets/defaultFormField.dart';
+import 'package:final_project1/features/cases/new/ui/widget/defaultFormField.dart';
 import 'package:final_project1/features/user_profile/data/request/chang_password_request.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../../../core/widgets/loading_widget.dart';
 import '../../bloc/change_pass_cubit/change_pass_cubit.dart';
 import '../../bloc/get_profile_cubit/get_profile_cubit.dart';
@@ -21,7 +25,8 @@ class ChangePasswordPage extends StatefulWidget {
 }
 
 class _ChangePasswordPageState extends State<ChangePasswordPage> {
-  bool isObscurePassword = true;
+  bool isObscurePasswordOld = true;
+  bool isObscurePasswordNew = true;
   final oldPassController = TextEditingController();
   final newPassController = TextEditingController();
 
@@ -34,7 +39,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-          appBar: build_appBar(title: 'تعديل كلمة المرور',context: context),
+          appBar: build_appBar(title: 'تعديل كلمة المرور', context: context),
           body: Container(
             padding: const EdgeInsets.only(left: 15, top: 20, right: 15),
             child: GestureDetector(
@@ -52,8 +57,8 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                     height: 30,
                   ),
                   defaultFormField(
-                      controller: newPassController,
-                      isPassword: isObscurePassword,
+                      controller: oldPassController,
+                      isPassword: isObscurePasswordOld,
                       type: TextInputType.visiblePassword,
                       validate: (value) {
                         if (value.isEmpty) {
@@ -63,17 +68,17 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                       },
                       suffixPressed: () {
                         setState(() {
-                          isObscurePassword = !isObscurePassword;
+                          isObscurePasswordOld = !isObscurePasswordOld;
                         });
                       },
                       hintText: 'كلمة المرور الحاليّة',
                       prefix: Icons.lock,
-                      suffix: isObscurePassword
-                          ? Icons.visibility
-                          : Icons.visibility_off),
+                      suffix: isObscurePasswordOld
+                          ?  Icons.visibility_off
+                          :Icons.visibility ),
                   defaultFormField(
                       controller: newPassController,
-                      isPassword: isObscurePassword,
+                      isPassword: isObscurePasswordNew,
                       type: TextInputType.visiblePassword,
                       validate: (value) {
                         if (value.isEmpty) {
@@ -83,14 +88,14 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                       },
                       suffixPressed: () {
                         setState(() {
-                          isObscurePassword = !isObscurePassword;
+                          isObscurePasswordNew = !isObscurePasswordNew;
                         });
                       },
                       hintText: 'كلمة المرور',
                       prefix: Icons.lock,
-                      suffix: isObscurePassword
-                          ? Icons.visibility
-                          : Icons.visibility_off),
+                      suffix: isObscurePasswordNew
+                          ?  Icons.visibility_off
+                          : Icons.visibility),
                   const SizedBox(
                     height: 30,
                   ),
@@ -121,7 +126,9 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                                   old: oldPassController.text,
                                   newPass: newPassController.text,
                                 );
-                                context.read<ChangePassCubit>().changePass(context, request: request);
+                                context
+                                    .read<ChangePassCubit>()
+                                    .changePass(context, request: request);
                               },
                             );
                           },
@@ -133,7 +140,9 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                           buttonColor: Colors.grey[300],
                           lable: 'إلغاء',
                           width: 170,
-                          onTap: () {},
+                          onTap: ()  {
+                            Navigator.pop(context);
+                          },
                         ),
                       ),
                     ],
@@ -145,38 +154,5 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
     );
   }
 
-  Widget buildTextFild(
-      String lableText, String placrholder, bool isPasswordTextFild) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        bottom: 40,
-      ),
-      child: TextFormField(
-        obscureText: isPasswordTextFild ? isObscurePassword : false,
-        decoration: InputDecoration(
-            //  enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey),),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: colorText),
-            ),
-            border: OutlineInputBorder(
-              borderSide: BorderSide(color: colorbar),
-            ),
-            suffixIcon: isPasswordTextFild
-                ? IconButton(
-                    onPressed: () {
-                      isObscurePassword = !isObscurePassword;
-                    },
-                    icon: Icon(Icons.remove_red_eye, color: colorIcon))
-                : null,
-            contentPadding: const EdgeInsets.all(8),
-            labelText: lableText,
-            labelStyle: TextStyle(
-                color: colorText, fontSize: 20, fontWeight: FontWeight.bold),
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-            hintText: placrholder,
-            hintStyle: const TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold, color: Colors.grey)),
-      ),
-    );
-  }
+
 }

@@ -20,8 +20,8 @@ class ChangePasswordRequest{
 
   Map<String, dynamic> toMap() {
     return {
-      'old': this.old,
-      'newPass': this.newPass,
+      'old_password': this.old,
+      'new_password': this.newPass,
     };
   }
 

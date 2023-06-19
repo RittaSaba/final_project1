@@ -11,6 +11,7 @@ import '../../../../core/network/network_info.dart';
 import '../../../../core/strings/enum_manager.dart';
 import '../../../../core/util/note_message.dart';
 import '../../../../core/util/pair_class.dart';
+import '../../../../core/util/shared_preferences.dart';
 
 part 'change_pass_state.dart';
 
@@ -38,6 +39,7 @@ class ChangePassCubit extends Cubit<ChangePassInitial> {
       if (await network.isConnected) {
         final response = await APIService().postApi(
           url: PostUrl.changePass,
+         // query: {'token': AppSharedPreference.getToken()},
           body: request.toMap(),
         );
 
