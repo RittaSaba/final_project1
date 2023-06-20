@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../core/di/injection_container.dart';
+import '../core/page_view/page_view.dart';
 import '../features/auth/presentation/pages/login_screen.dart';
 import '../features/cases/new/bloc/cases_cubit/GetCaseCubit.dart';
 import '../features/splash_screen/plash_screen.dart';
@@ -27,9 +28,9 @@ class AppRoutes {
     switch (screenName) {
       //region auth
 
-      case RouteName.splash:
+      case RouteName.pageView:
         //region
-        return MaterialPageRoute(builder: (_) => const SplashScreenPage());
+        return MaterialPageRoute(builder: (_) => PView());
       //endregion
 
       case RouteName.changePassword:
@@ -164,7 +165,7 @@ class AppRoutes {
 }
 
 class RouteName {
-  static const splash = '/';
+  static const pageView = '/';
   static const signup = '/1';
   static const login = '/2';
   static const forgetPassword = '/3';

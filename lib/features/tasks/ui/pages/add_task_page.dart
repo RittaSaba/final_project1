@@ -26,7 +26,7 @@ class AddTaskePage extends StatefulWidget {
 }
 
 class _AddTaskePageState extends State<AddTaskePage> {
-  final localTask = LocalTask(title: "",note: "");
+  final  localTask = LocalTask(title: "",note: "");
 
   var now = DateTime.now();
   var _selectedDate = DateTime.now();

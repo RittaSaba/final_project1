@@ -33,6 +33,7 @@ TextButton buildTextButton(String name, double size, BuildContext context) {
           url: PostUrl.sendAttachment,
           files: [
             image
+
           ],
           nameFile: 'attachment',
           query: {

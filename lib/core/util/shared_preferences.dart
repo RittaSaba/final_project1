@@ -42,6 +42,7 @@ class AppSharedPreference {
 
   static User getUserModel() {
     var json = _prefs.getString(_user) ?? '{}';
+
     return User.fromJson(jsonDecode(json));
   }
 
@@ -86,9 +87,12 @@ class AppSharedPreference {
     final listTasks = <LocalTask>[];
     for (var e in listTasksJson) {
       final item = LocalTask.fromMap(jsonDecode(e));
+
       if (filterDate.myHash == item.startTime?.myHash) {
-        listTasks.add(item);
-      }
+
+
+          listTasks.add(item);}
+
     }
 
     return listTasks;

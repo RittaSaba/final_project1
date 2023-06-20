@@ -48,9 +48,15 @@ class _Case_DisplayState extends State<Case_Display> {
                 children: [
                   Container(
                     padding: EdgeInsets.all(10),
-                    child: Text(
-                      "حالة القضية",
-                      style: TextStyle(fontSize: 25),
+                    child: Row(
+                      children: [
+                        Text(
+                          "حالة القضية ",
+                          style: TextStyle(fontSize: 25),
+                        ),
+                        SizedBox(width: 5,),
+                        Text( widget.modelCase.status,style: TextStyle(fontSize: 18,color: Colors.redAccent),),
+                      ],
                     ),
                   ),
                   SizedBox(
@@ -59,8 +65,35 @@ class _Case_DisplayState extends State<Case_Display> {
                   MyExpansionWidget(
                     items: [
                       ItemExpansion(
-                        header: DrawableText(text: 'تفاصيل إضافية'),
-                        body: Container(padding: EdgeInsets.all(8),child: DrawableText(text: widget.modelCase.facts,padding: EdgeInsets.all(10.0),),),
+                        header: DrawableText(text: 'الوقائع و الالتماس '),
+                        body: Container(
+                          padding: EdgeInsets.all(8),
+                          child: Column(
+                            children: [
+                              DrawableText(
+                                text: "الوقائع :",
+                                color: Colors.redAccent,
+                                padding: EdgeInsets.all(10.0),
+                              ),
+                              DrawableText(
+                                text: widget.modelCase.facts,
+                                padding: EdgeInsets.all(10.0),
+                              ),
+                              Divider(
+                                color: colorbar,
+                              ),
+                              DrawableText(
+                                text: "الالتماس :",
+                                color: Colors.redAccent,
+                                padding: EdgeInsets.all(10.0),
+                              ),
+                              DrawableText(
+                                text: widget.modelCase.claim,
+                                padding: EdgeInsets.all(10.0),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
                       ItemExpansion(
                         header: DrawableText(text: 'جلسات القضية'),
@@ -70,25 +103,52 @@ class _Case_DisplayState extends State<Case_Display> {
                             if (!snapshot.hasData) {
                               return const LoadingWidget();
                             }
-                            return Container(padding: EdgeInsets.all(8),child: ListView.separated(
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemBuilder: (context, index) {
-                                  final item = snapshot.data!.sessions[index];
-                                  return Container(padding: EdgeInsets.all(8),child: Column(crossAxisAlignment: CrossAxisAlignment.start,children: [DrawableText(text:"الجلسة رقم "+ item.number.toString() ?? '',size: 16,),
-                                    DrawableText(text: item.description ?? '',size: 16,)],),);
-                                },
-                                separatorBuilder: (context, index) {
-                                  return 10.0.vSpace;
-                                },
-                                itemCount: snapshot.data!.sessions.length),);
+                            return Container(
+                              padding: EdgeInsets.all(8),
+                              child: ListView.separated(
+                                  shrinkWrap: true,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  itemBuilder: (context, index) {
+                                    final item = snapshot.data!.sessions[index];
+                                    return Container(
+                                      padding: EdgeInsets.all(8),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          DrawableText(
+
+                                            text: "الجلسة رقم " +
+                                                    item.number.toString() ??
+                                                '',
+                                            color: Colors.redAccent,
+                                            size: 16,
+                                          ),
+                                          DrawableText(
+                                            text: item.description ?? '',
+                                            size: 16,
+                                          )
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                  separatorBuilder: (context, index) {
+                                    return 10.0.vSpace;
+                                  },
+                                  itemCount: snapshot.data!.sessions.length),
+                            );
                           },
                         ),
                       ),
                       ItemExpansion(
-                        header: DrawableText(text: 'مرفقات القضية'),
-                        body: Container(child: Column(children: [/*widget.modelCase*/],),)
-                      ),
+                          header: DrawableText(text: 'مرفقات القضية'),
+                          body: Container(
+                            child: Column(
+                              children: [
+                                /*widget.modelCase*/
+                              ],
+                            ),
+                          )),
                       ItemExpansion(
                         header: DrawableText(text: 'القرارات'),
                         body: FutureBuilder(
@@ -97,17 +157,31 @@ class _Case_DisplayState extends State<Case_Display> {
                             if (!snapshot.hasData) {
                               return const LoadingWidget();
                             }
-                            return Container(padding: EdgeInsets.all(8),child: ListView.separated(
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemBuilder: (context, index) {
-                                  final item = snapshot.data!.decisions[index];
-                                  return DrawableText(text: item.description ?? '');
-                                },
-                                separatorBuilder: (context, index) {
-                                  return 10.0.vSpace;
-                                },
-                                itemCount: snapshot.data!.decisions.length),);
+                            return Container(
+                              padding: EdgeInsets.all(8),
+                              child: ListView.separated(
+                                  shrinkWrap: true,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  itemBuilder: (context, index) {
+                                    final item =
+                                        snapshot.data!.decisions[index];
+                                    return Column(
+                                      children: [
+                                        DrawableText(
+                                          text: "  قرار رقم ${item.number} : ",
+                                          color: Colors.redAccent,
+                                          padding: EdgeInsets.all(6.0),
+                                        ),
+                                        DrawableText(
+                                            text: item.description ?? ''),
+                                      ],
+                                    );
+                                  },
+                                  separatorBuilder: (context, index) {
+                                    return 10.0.vSpace;
+                                  },
+                                  itemCount: snapshot.data!.decisions.length),
+                            );
                           },
                         ),
                       ),

@@ -3,6 +3,12 @@ class Assets {
   Assets._();
 
   static const String assetsBell = 'assets/bell.svg';
+  static const String assetsCompletingTasks = 'assets/completing-tasks.json';
   static const String assetsLl = 'assets/ll.jpg';
+  static const String assetsSet = 'assets/set.json';
+  static const String assetsSsss = 'assets/ssss.json';
+  static const String assetsTasklist = 'assets/tasklist.json';
+  static const String assetsTimer1 = 'assets/timer1.json';
+  static const String assetsWork = 'assets/work.json';
 
 }

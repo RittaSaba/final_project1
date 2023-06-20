@@ -30,7 +30,7 @@ class _TaskPageState extends State<TaskPage> {
 
   @override
   void initState() {
-    listTasks.addAll(AppSharedPreference.getTask(filterDate: _selectedDate));
+    listTasks.addAll(AppSharedPreference.getTask(filterDate: _selectedDate ));
     super.initState();
   }
 

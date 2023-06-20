@@ -14,6 +14,7 @@ class LocalTask {
     this.isCompleted,
     this.remind,
     this.repeat,
+
   }) {
     startTime ??= DateTime.now();
     endTime ??= DateTime.now();

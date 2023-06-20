@@ -26,8 +26,8 @@ class Task {
     required this.id,
     required this.name,
     required this.description,
-    required this.startDate,
-    required this.endDate,
+   // required this.startDate,
+    //required this.endDate,
     required this.status,
     required this.valueStatus,
     required this.priority,
@@ -39,8 +39,8 @@ class Task {
   final int id;
   final String name;
   final String description;
-  final DateTime? startDate;
-  final DateTime? endDate;
+  //final DateTime? startDate;
+  //final DateTime? endDate;
   final String status;
   final num valueStatus;
   final String priority;
@@ -53,8 +53,8 @@ class Task {
       id: json["id"] ?? 0,
       name: json["name"] ?? "",
       description: json["description"] ?? "",
-      startDate: DateTime.tryParse(json["start_date"] ?? ""),
-      endDate: DateTime.tryParse(json["end_date"] ?? ""),
+    //  startDate: DateTime.tryParse(json["start_date"] ?? ""),
+      //endDate: DateTime.tryParse(json["end_date"] ?? ""),
       status: json["Status"] ?? "",
       valueStatus: json["Value_Status"] ?? 0,
       priority: json["priority"] ?? "",

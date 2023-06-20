@@ -9,23 +9,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../domain/entities/task.dart';
 import '../widgets/list_tile_day_widget.dart';
 
-final List<Task1> li = [
-
-  Task1(
-      id: 5,
-      task_name: "موعد لجلسة الجنائية",
-      description:
-      "اذا كنت اريد اجراء إحصاء على عمود معين ، فااقوم بتخزين هذا العمود فقط ، فان التخزينعلى مستوى العمود اسرع بكثير وخاصة في حال كانت الاحصاءات متمركزة على الاعمدة وبالتالي هذه ال الموجودة داخل الداتا بيز تساعدنا لتطبيق مفاهيم اg  DWمع المحافظة على كل المميزات و المفاهيم الموجوداضافة الى عدم ضياع البيانات أو ضياعها بشكل اقل",
-      start_date: DateTime(2023, 5, 21, 10, 15),
-      end_date: DateTime(2023, 5, 21, 10, 45),
-      status: "الحالة",
-      status_value: 1,
-      user_first_name: "ريتا",
-      user_last_name: "سابا",
-      case_number: "112",
-      type_id: 2),
-
-];
 
 
 class TasksDisplay extends StatefulWidget {
@@ -48,6 +31,92 @@ class _TasksDisplayState extends State<TasksDisplay> {
             return Card(
               elevation: 20,
               shadowColor: colorbar,
+              /*AlertDialog(
+          shape: Border.all(
+              color: colorIcon,
+              width: 6),
+          title: Text(
+            task.name,
+            style: TextStyle(
+                fontWeight:
+                FontWeight
+                    .bold,
+                color:
+                colorbar1),
+          ),
+          content:
+          SingleChildScrollView(
+            child: Column(
+              //crossAxisAlignment: CrossAxisAlignment.start,
+
+              children: [
+                /*      Row(
+                  children: [
+                    Text(
+                      "وقت البدء " +
+                          task.startDate
+
+                              .toString() +
+                          ":" +
+                          item.startTime!
+                              .minute
+                              .toString(),
+                      style:
+                      TextStyle(
+                        fontSize:
+                        14,
+                        color:
+                        colorbar1,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text(
+                      "وقت الانتهاء " +
+                          item.endTime!
+                              .hour
+                              .toString() +
+                          ":" +
+                          item.endTime!
+                              .minute
+                              .toString(),
+                      style:
+                      TextStyle(
+                        fontSize:
+                        14,
+                        color:
+                        colorbar1,
+                      ),
+                    ),
+                  ],
+                ),*/
+                Text(
+                  task.description,
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              child: Text(
+                "تم",
+                style: TextStyle(
+                    color:
+                    colorText,
+                    fontWeight:
+                    FontWeight
+                        .bold),
+              ),
+              onPressed: () {
+                Navigator.of(
+                    context)
+                    .pop();
+              },
+            ),
+          ],
+        );*/
               //shape: CircleBorder(side: BorderSide(width: 20)),
               child: build_listTile_Day_Widget(item , context),
             );
