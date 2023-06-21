@@ -1,0 +1,22 @@
+{
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC4xNzUuMTc6ODAwMS9hcGkvYXV0aC9sb2dpbiIsImlhdCI6MTY4NzE3MTAyMSwiZXhwIjoxNjg5Nzk5MDIxLCJuYmYiOjE2ODcxNzEwMjEsImp0aSI6IkxGRzM1RE8zS3FSV2Eyb2giLCJzdWIiOiIzNiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.ZHkVUaMsxm1TuPIVHZmFqB2enqzjCzFdn-_QvHXhy4I",
+  "token_type": "bearer",
+  "expires_in": 1918440000,
+  "user": {
+    "id": 36,
+    "first_name": "\u0641\u0627\u0637\u0645\u0629",
+    "last_name": "\u062d\u0627\u062c \u0645\u062d\u0645\u062f",
+    "mother_name": ".",
+    "father_name": "\u0645\u062d\u0645\u062f",
+    "phone": "0934652986",
+    "current_address": "\u062f\u0645\u0634\u0642",
+    "date_of_birth": "1990-06-30",
+    "place_of_birth": "\u062d\u0644\u0628",
+    "email": null,
+    "email_verified_at": null,
+    "status": "\u0645\u0641\u0639\u0644",
+    "role_name": "\u0645\u062d\u0627\u0645\u064a",
+    "created_at": "2023-06-14T05:21:59.000000Z",
+    "updated_at": "2023-06-15T07:15:04.000000Z"
+  }
+}
