@@ -22,9 +22,11 @@ class Drawer_Widget extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () => Navigator.pushNamed(context, RouteName.userProfileDetails),
+            
             child: UserAccountsDrawerHeader(
-              accountName: const Text("myUser.name"),
-              accountEmail: const Text("myUser.phone.toString()"),
+
+              accountName: Text(AppSharedPreference.getUserModel().firstName+" "+AppSharedPreference.getUserModel().lastName),
+              accountEmail:  Text(AppSharedPreference.getUserModel().phone),
               currentAccountPicture: CircleAvatar(
                 child: ClipOval(
                   child: Image.asset(

@@ -1,5 +1,6 @@
 import 'package:final_project1/core/extensions.dart';
 import 'package:final_project1/features/summaries/data/request/login__request.dart';
+import 'package:final_project1/features/user_profile/ui/widget/my_button.dart';
 import 'package:final_project1/router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -64,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                         type: TextInputType.phone,
                         validate: (value) {
                           if (value.isEmpty) {
-                            return 'Phone must not be empty';
+                            return 'يُرجى إدخال رقم ';
                           }
                           return null;
                         },
@@ -79,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                         type: TextInputType.visiblePassword,
                         validate: (value) {
                           if (value.isEmpty) {
-                            return 'Password is to o short';
+                            return 'كلمة السر قصيرة جدا';
                           }
                           return null;
                         },
@@ -96,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(
                       height: 20,
                     ),
-                    Row(
+                   /* Row(
                       children: [
                         Checkbox(
                           value: rememberMePassword,
@@ -117,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                               color: colorText),
                         ),
                       ],
-                    ),
+                    ),*/
                     const SizedBox(
                       height: 40,
                     ),
@@ -134,7 +135,7 @@ class _LoginPageState extends State<LoginPage> {
                           }
 
                           return MaterialButton(
-                            color: Colors.white,
+                            color: colorbar,
                             onPressed: () {
                               if (formKey.currentState!.validate()) {
                                 final request = LoginRequest(
@@ -148,10 +149,10 @@ class _LoginPageState extends State<LoginPage> {
                               }
                             },
                             child: Text(
-                              'تسجيل الدخول',
+                              'تسجيل دخول',
                               style: TextStyle(
-                                color: colorText,
-                                fontFamily: 'Cairo',
+                                color: Colors.white,
+                               fontWeight: FontWeight.bold
                               ),
                             ),
                           );

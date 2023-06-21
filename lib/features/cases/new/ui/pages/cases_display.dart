@@ -55,7 +55,8 @@ class _CaseDisplayfinalState extends State<CaseDisplayfinal> {
                       ),
 
                       buildCaseField("المحامي :   ", item.lawyers.firstOrNull?.firstName??''),
-                      buildCaseField("الموكل  :   ", 'item.clients'),
+                      for(int i=0;i<item.clients.length;i++)
+                      buildCaseField("الموكل  :   ", item.clients[i].firstName+" "+item.clients[i].lastName),
                       // buildCaseField("تاريخ القضية :  ", e.court_id
                       //     .toString()),
 

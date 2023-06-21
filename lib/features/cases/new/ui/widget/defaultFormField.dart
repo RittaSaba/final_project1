@@ -15,11 +15,11 @@ Widget defaultFormField({
   IconData? suffix,
 }) =>
     Container(
-      height: 52,
-      padding: EdgeInsets.only(left: 14),
-      margin: EdgeInsets.only(top: 8.0),
+// height: 52,
+      padding: const EdgeInsets.only(left: 14, right: 14, bottom: 2),
+      margin: const EdgeInsets.only(top: 8.0),
       decoration: BoxDecoration(
-        color: Color(0xff01305a).withAlpha(20),
+        color: const Color(0xff01305a).withAlpha(20),
         borderRadius: BorderRadius.circular(12),
       ),
       child: TextFormField(
@@ -35,17 +35,18 @@ color: Color(0xff01305a).withAlpha(20),
 borderRadius: BorderRadius.circular(12),)*/
 
         decoration: InputDecoration(
-          focusedBorder: UnderlineInputBorder(
+          focusedBorder: const UnderlineInputBorder(
             borderSide: BorderSide.none,
           ),
-          enabledBorder: OutlineInputBorder(
+
+          enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide.none,
           ),
 
 //focusColor: Colors.red,
 
           hintText: hintText,
-          hintStyle: TextStyle(
+          hintStyle: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w400,
             color: Colors.grey,
@@ -53,18 +54,21 @@ borderRadius: BorderRadius.circular(12),)*/
 
           prefixIcon: Icon(
             prefix,
-            color: Color(0xff01305a).withOpacity(0.6),
+            color: const Color(0xff01305a).withOpacity(0.6),
           ),
           suffixIcon: suffix != null
               ? IconButton(
                   onPressed: suffixPressed,
                   icon: Icon(
                     suffix,
-                    color: Color(0xff01305a).withOpacity(0.6),
+                    color: const Color(0xff01305a).withOpacity(0.6),
                   ),
                 )
               : null,
-          border: OutlineInputBorder(),
+
+          border: const OutlineInputBorder(
+            borderSide: BorderSide.none,
+          ),
         ),
       ),
     );

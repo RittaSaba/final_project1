@@ -43,12 +43,15 @@ class NoteMessage {
     ScaffoldMessenger.of(context).showSnackBar(snack);
   }
 
-  static showBottomSheet(BuildContext context, Widget child) {
-    showModalBottomSheet(
+  static showBottomSheet(
+      BuildContext context, Widget child, {Function()? onCancel}) async {
+    await showModalBottomSheet(
       context: context,
       backgroundColor: Colors.white,
       isScrollControlled: true,
       builder: (builder) => child,
     );
+
+    onCancel?.call();
   }
 }

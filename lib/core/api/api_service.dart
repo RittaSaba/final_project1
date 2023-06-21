@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
 
 import 'package:collection/collection.dart';
+import 'package:file_picker/file_picker.dart';
 
 // import 'package:flutter_qareeb_client/core/extensions/extensions.dart';
 import 'package:http/http.dart' as http;
@@ -10,6 +12,8 @@ import 'package:logger/logger.dart';
 
 import '../util/shared_preferences.dart';
 import 'package:http_parser/http_parser.dart';
+import 'package:path/path.dart' as pathPakeg;
+
 var loggerObject = Logger(
   printer: PrettyPrinter(
     methodCount: 0,
@@ -179,6 +183,7 @@ class APIService {
     String type = 'POST',
     String nameFile = 'File',
     List<XFile?>? files,
+    List<PlatformFile?>? pFiles,
     Map<String, dynamic>? query,
     Map<String, dynamic>? fields,
     Map<String, String>? header,
@@ -199,8 +204,20 @@ class APIService {
 
       final multipartFile = http.MultipartFile.fromBytes(
           nameFile, await file.readAsBytes(),
-          contentType: MediaType('image','jpg'),
-          filename: '_${DateTime.now().toIso8601String()}');
+          // contentType: MediaType('image/*','jpg'),
+          filename:
+              '${getRandomString(15)}${pathPakeg.extension(file.path ?? '')}');
+
+      request.files.add(multipartFile);
+    }
+    for (var file in (pFiles ?? <PlatformFile?>[])) {
+      if (file == null) continue;
+
+      final multipartFile = http.MultipartFile.fromBytes(
+          nameFile, await File(file.path!).readAsBytes(),
+          // contentType: MediaType('image/*','jpg'),
+          filename:
+              '${getRandomString(15)}${pathPakeg.extension(file.path ?? '')}');
 
       request.files.add(multipartFile);
     }
@@ -261,3 +278,9 @@ extension SplitByLength on String {
 // extension on String {
 //   List<String> splitByLength(int length) => [substring(0, length), substring(length)];
 // }
+
+const _chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz';
+Random _rnd = Random();
+
+String getRandomString(int length) => String.fromCharCodes(Iterable.generate(
+    length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));

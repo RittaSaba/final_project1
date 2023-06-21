@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:final_project1/core/app_theme.dart';
 import 'package:final_project1/core/extensions.dart';
 import 'package:final_project1/core/util/shared_preferences.dart';
 import 'package:final_project1/core/widgets/spinner_widget.dart';
@@ -149,11 +150,14 @@ class _AddTaskePageState extends State<AddTaskePage> {
                 },
               ),
             ),
+            SizedBox(height: 18,),
             Row(
               children: [
                 Expanded(
                   child: MyButton(
+
                     lable: "إنشاء مهمة",
+
                     onTap: () {
                       localTask.title = _titleController.text;
                       localTask.note = _noteController.text;
@@ -161,7 +165,7 @@ class _AddTaskePageState extends State<AddTaskePage> {
                       AppSharedPreference.addTask(localTask);
                       Navigator.pop(context);
                     },
-                    buttonColor: Colors.lightBlue,
+                    buttonColor: colorbar,
                   ),
                 ),
                 //_colorPallete(),
@@ -174,7 +178,7 @@ class _AddTaskePageState extends State<AddTaskePage> {
                     onTap: () {
                       Navigator.pop(context);
                     },
-                    buttonColor: Colors.grey,
+                    buttonColor: Colors.grey.shade400,
                   ),
                 ),
               ],

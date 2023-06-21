@@ -3,7 +3,6 @@ enum Repeat { never, daily, weekly, monthly }
 const remindList = [5, 12, 15, 20];
 
 class LocalTask {
-
   LocalTask({
     this.creationTime,
     this.startTime,
@@ -13,8 +12,8 @@ class LocalTask {
     required this.note,
     this.isCompleted,
     this.remind,
+    this.userId,
     this.repeat,
-
   }) {
     startTime ??= DateTime.now();
     endTime ??= DateTime.now();
@@ -24,13 +23,12 @@ class LocalTask {
   DateTime? startTime;
   DateTime? endTime;
   int? id;
+  int? userId;
   String title;
   String note;
   bool? isCompleted;
   int? remind;
   Repeat? repeat;
-
-
 
   LocalTask copyWith({
     DateTime? creationTime,
@@ -49,7 +47,7 @@ class LocalTask {
       endTime: endTime ?? this.endTime,
       id: id ?? this.id,
       title: title,
-      note: note ,
+      note: note,
       isCompleted: isCompleted ?? this.isCompleted,
       remind: remind ?? this.remind,
       repeat: repeat ?? this.repeat,
@@ -62,6 +60,7 @@ class LocalTask {
       "startTime": startTime?.toIso8601String(),
       "endTime": endTime?.toIso8601String(),
       'id': id,
+      'userId': userId,
       'title': title,
       'note': note,
       'isCompleted': isCompleted,
@@ -78,6 +77,7 @@ class LocalTask {
       id: map['id'] ?? 0,
       title: map['title'] ?? '',
       note: map['note'] ?? '',
+      userId: map['userId'] ?? 0,
       isCompleted: map['isCompleted'] ?? false,
       remind: map['remind'] ?? 0,
       repeat: Repeat.values[map['repeat'] ?? 0],

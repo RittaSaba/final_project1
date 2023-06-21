@@ -67,6 +67,7 @@ class AppSharedPreference {
   }
 
   static void addTask(LocalTask task) {
+    task.userId = getUserModel().id;
     final listTasksJson = _prefs.getStringList(_tasks) ?? <String>[];
 
     task.id = _getCounter();
@@ -76,10 +77,10 @@ class AppSharedPreference {
 
     _prefs.setStringList(_tasks, listTasksJson);
 
-    final listTasks = <LocalTask>[];
-    for (var e in listTasksJson) {
-      listTasks.add(LocalTask.fromMap(jsonDecode(e)));
-    }
+    // final listTasks = <LocalTask>[];
+    // for (var e in listTasksJson) {
+    //   listTasks.add(LocalTask.fromMap(jsonDecode(e)));
+    // }
   }
 
   static List<LocalTask> getTask({required DateTime filterDate}) {
@@ -88,11 +89,10 @@ class AppSharedPreference {
     for (var e in listTasksJson) {
       final item = LocalTask.fromMap(jsonDecode(e));
 
-      if (filterDate.myHash == item.startTime?.myHash) {
-
-
-          listTasks.add(item);}
-
+      if (filterDate.myHash == item.startTime?.myHash &&
+          item.userId == getUserModel().id) {
+        listTasks.add(item);
+      }
     }
 
     return listTasks;

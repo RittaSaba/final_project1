@@ -16,7 +16,7 @@ class CasesResponse {
 
   Map<String, dynamic> toJson() => {
     "status": status,
-    "cases": cases.map((x) => x.toJson()).toList(),
+    "cases": cases.map((x) => x?.toJson()).toList(),
   };
 
 }
@@ -51,8 +51,8 @@ class Case {
   final DateTime? createdAt;
   final DateTime? updatedAt;
   final Pivot? pivot;
-  final List<Lawyer> lawyers;
-  final List<dynamic> clients;
+  final List<Client> lawyers;
+  final List<Client> clients;
 
   factory Case.fromJson(Map<String, dynamic> json){
     return Case(
@@ -68,8 +68,8 @@ class Case {
       createdAt: DateTime.tryParse(json["created_at"] ?? ""),
       updatedAt: DateTime.tryParse(json["updated_at"] ?? ""),
       pivot: json["pivot"] == null ? null : Pivot.fromJson(json["pivot"]),
-      lawyers: json["lawyers"] == null ? [] : List<Lawyer>.from(json["lawyers"]!.map((x) => Lawyer.fromJson(x))),
-      clients: json["clients"] == null ? [] : List<dynamic>.from(json["clients"]!.map((x) => x)),
+      lawyers: json["lawyers"] == null ? [] : List<Client>.from(json["lawyers"]!.map((x) => Client.fromJson(x))),
+      clients: json["clients"] == null ? [] : List<Client>.from(json["clients"]!.map((x) => Client.fromJson(x))),
     );
   }
 
@@ -86,14 +86,14 @@ class Case {
     "created_at": createdAt?.toIso8601String(),
     "updated_at": updatedAt?.toIso8601String(),
     "pivot": pivot?.toJson(),
-    "lawyers": lawyers.map((x) => x.toJson()).toList(),
-    "clients": clients.map((x) => x).toList(),
+    "lawyers": lawyers.map((x) => x?.toJson()).toList(),
+    "clients": clients.map((x) => x?.toJson()).toList(),
   };
 
 }
 
-class Lawyer {
-  Lawyer({
+class Client {
+  Client({
     required this.id,
     required this.firstName,
     required this.lastName,
@@ -129,8 +129,8 @@ class Lawyer {
   final DateTime? updatedAt;
   final Pivot? pivot;
 
-  factory Lawyer.fromJson(Map<String, dynamic> json){
-    return Lawyer(
+  factory Client.fromJson(Map<String, dynamic> json){
+    return Client(
       id: json["id"] ?? 0,
       firstName: json["first_name"] ?? "",
       lastName: json["last_name"] ?? "",
@@ -158,7 +158,7 @@ class Lawyer {
     "father_name": fatherName,
     "phone": phone,
     "current_address": currentAddress,
-    // "date_of_birth": "${dateOfBirth.year.toString().padLeft(4'0')}-${dateOfBirth.month.toString().padLeft(2'0')}-${dateOfBirth.day.toString().padLeft(2'0')}",
+
     "place_of_birth": placeOfBirth,
     "email": email,
     "email_verified_at": emailVerifiedAt,

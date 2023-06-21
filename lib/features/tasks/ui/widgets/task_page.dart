@@ -40,7 +40,8 @@ class _TaskPageState extends State<TaskPage> {
         textDirection: ui.TextDirection.rtl,
         child: Scaffold(
           floatingActionButton: FloatingActionButton(
-            child: const Icon(Icons.add, color: Colors.white),
+            backgroundColor: colorIcon,
+            child: const Icon(Icons.add, color: Colors.white,),
             onPressed: () async {
               await Navigator.pushNamed(context, RouteName.addTask);
               setState(() {
@@ -197,26 +198,40 @@ class _TaskPageState extends State<TaskPage> {
                                             const SizedBox(
                                               height: 20,
                                             ),
+
+
                                             MyButton(
                                                 lable: "تعديل",
                                                 width: 200,
-                                                onTap: () {
-                                                  Navigator.of(context).push(
+                                                onTap: () async{
+                                                 await Navigator.of(context).push(
                                                       MaterialPageRoute(
                                                           builder: (_) {
                                                     return EditOldTaskePage(
                                                       oldTask: item,
                                                     );
                                                   }));
+                                                 setState(() {
+                                                   listTasks
+                                                     ..clear()
+                                                     ..addAll(
+                                                         AppSharedPreference.getTask(filterDate: _selectedDate));
+                                                 });
                                                 }),
                                             MyButton(
                                                 lable: "حذف",
                                                 width: 200,
-                                                onTap: () {
-                                                  AppSharedPreference
+                                                onTap: () async{
+                                                 await AppSharedPreference
                                                       .deleteTask(item.id ?? 0);
                                                   //  AppSharedPreference.updateTask(taskOnEditing,taskOnEditing.id??0 );
                                                   Navigator.pop(context);
+                                                 setState(() {
+                                                   listTasks
+                                                     ..clear()
+                                                     ..addAll(
+                                                         AppSharedPreference.getTask(filterDate: _selectedDate));
+                                                 });
                                                 }),
                                           ],
                                         ),
